@@ -1,5 +1,4 @@
 class Train < ActiveRecord::Base
-  validates :number, presence: true
 
   belongs_to :current_station, class_name: 'RailwayStation', foreign_key: :current_station_id
   belongs_to :route
@@ -9,7 +8,7 @@ class Train < ActiveRecord::Base
 
   def carriage_compartments
     carriages.select do |carriage|
-       carriage.carriage_type == CarriageType.find(2)
+      carriage.carriage_type == CarriageType.find(2)
     end
   end
 
@@ -42,9 +41,11 @@ class Train < ActiveRecord::Base
   def count_carriage_reserved
     self.carriage_reserveds.size
   end
+
+  validates :number, presence: true
 end
 
 
-# Числа нижних и верхних купейных мест
+
 
 
