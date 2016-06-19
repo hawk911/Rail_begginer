@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: 
+  cost_up: 
+  cost_down: 1
+
+two:
+  name: 
+  cost_up: 
+  cost_down: 1

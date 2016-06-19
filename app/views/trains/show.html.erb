@@ -14,5 +14,50 @@
     </ul>
 <%end%>
 
+<%if @train.carriages.empty? %>
+  <p> Нет вагонов </p>
+<% else %>
+  <p>Вагоны </p>
+  <% @train.carriages.each  do |carriage| %>
+    <ul>
+      <li> <%= carriage.name %>  : <%= carriage.carriage_type.name %> </li>
+    </ul>
+  <% end %>
+  <% if @train.count_carriage_compartment !=0 %>
+    <p>
+      <strong>Количество купейных вагонов:</strong>
+        <%= @train.count_carriage_compartment %>
+      <ul>Количество верхних мест
+        <li> <%= @train.compartment_up_seats %></li>
+      </ul>
+      <ul>Количество нижних мест
+        <li> <%= @train.compartment_down_seats %></li>
+      </ul>
+    </p>
+  <% else %>
+    <p>
+      <strong> Нет купейных вагонов</strong>
+    </p>
+  <% end %>
+  <% if @train.count_carriage_reserved !=0 %>
+    <p>
+      <strong>Количество плацкартных вагонов:</strong>
+        <%= @train.count_carriage_reserved %>
+      <ul>Количество верхних мест
+        <li> <%= @train.reserved_up_seats %></li>
+      </ul>
+      <ul>Количество нижних мест
+        <li> <%= @train.reserved_down_seats %></li>
+      </ul>
+    </p>
+  <% else %>
+    <p>
+      <strong> Нет плацкартных вагонов</strong>
+    </p>
+  <% end %>
+<% end %>
+
+
+
 <%= link_to 'Edit', edit_train_path(@train) %> |
 <%= link_to 'Back', trains_path %>

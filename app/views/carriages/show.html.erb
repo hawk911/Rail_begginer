@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Наименование:</strong>
+  <%= @carriage.name %>
+</p>
+
+<% if @carriage.carriage_type.nil? %>
+    <td> Тип не назначен </td>
+  <% else %>
+    <td> Тип вагона: <%= @carriage.carriage_type.name %></td>
+<% end %>
+
+<%if @carriage.train.nil? %>
+  <p> Вагон не назначен </p>
+<% else %>
+  <p>Вагон принадлежит поезду номер: </p>
+  <ul>
+      <li> <%= @carriage.train.number %> </li>
+    </ul>
+<%end%>
+
+<%= link_to 'Edit', edit_carriage_path(@carriage) %> |
+<%= link_to 'Back', carriages_path %>
