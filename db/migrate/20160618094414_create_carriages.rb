@@ -4,6 +4,7 @@ class CreateCarriages < ActiveRecord::Migration
       t.string :name
       t.integer :count_up
       t.integer :count_down
+      t.string  :type
 
       t.timestamps null: false
     end
