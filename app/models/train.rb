@@ -6,6 +6,8 @@ class Train < ActiveRecord::Base
   has_many :tikets
   has_many :carriages
 
+  before_validation :set_number_carriage
+
   def carriage_compartments
     carriages.select do |carriage|
       carriage.carriage_type == CarriageType.find(2)
@@ -40,6 +42,13 @@ class Train < ActiveRecord::Base
 
   def count_carriage_reserved
     self.carriage_reserveds.size
+  end
+
+  protected
+
+  def set_number_carriage
+    number_max = train.carriages.maximum(:number)
+    self.number = number_max.nil? ? 1 : number_max +1
   end
 
   validates :number, presence: true
