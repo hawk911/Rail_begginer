@@ -1,5 +1,10 @@
 <h1>Новый Вагон</h1>
 
-<%= render 'form' %>
+<% if params[:carriage_type] == CarriageType.find(1) %>
+  <%= render 'econom_carriage'%>
+<% end %>
+<p><%= link_to 'Плацкарт', new_train_carriage_path(carriage_type: CarriageType.find(1))
+ %></p>
 
-<%= link_to 'Назад', routes_path %>
+
+<%= link_to 'Назад', carriages_path %>

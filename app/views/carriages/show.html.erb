@@ -2,7 +2,10 @@
 
 <p>
   <strong>Наименование:</strong>
-  <%= @carriage.name %>
+  <td><%= @carriage.name %></td>
+</p>
+<p>Номер вагона:
+<%= @carriage.number %>
 </p>
 
 <% if @carriage.carriage_type.nil? %>

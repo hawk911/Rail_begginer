@@ -3,12 +3,19 @@
     <% if carriage.train.nil? %>
       <td> Вагон не назначен </td>
     <% else %>
-      <td> Поезд № <%= carriage.train.number%> </td>
+      <td> <b>Поезд </b> № <%= carriage.train.number%> </td>
     <% end %>
+
+    <% if carriage.number.nil? %>
+      <td> Номер вагону не назначен </td>
+    <% else %>
+      <td> <b>Номер вагона: </b> <%= carriage.number%> </td>
+    <% end %>
+
     <% if carriage.carriage_type.nil? %>
       <td> Тип не назначен </td>
     <% else %>
-      <td> Тип вагона: <%= carriage.carriage_type.name %></td>
+      <td> <b>Тип вагона: </b> <%= carriage.carriage_type.name %></td>
     <% end %>
   <td><%= link_to 'Show', carriage %></td>
   <td><%= link_to 'Edit', edit_carriage_path(carriage) %></td>

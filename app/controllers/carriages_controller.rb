@@ -52,6 +52,7 @@ class CarriagesController < ApplicationController
 
     def carriage_params
       params.require(:carriage).permit(:name, :count_up, :count_down, :train_id,
-        :carriage_type_id)
+        :count_side_up,:count_side_down,:carriage_type_id)
     end
+
 end
