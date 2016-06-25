@@ -12,13 +12,46 @@
     <td> Тип не назначен </td>
   <% else %>
     <td> Тип вагона: <%= @carriage.carriage_type.name %></td>
+     <% if @carriage.carriage_type == CarriageType.find(1) %>
+        <p>Верхних мест:   <%= @carriage.count_up.nil? ? 0 :
+          @carriage.count_up %> </p>
+
+        <p>Нижних Мест:   <%= @carriage.count_down.nil? ? 0 :
+          @carriage.count_down %> </p>
+
+        <p>Боковых верхних мест :   <%= @carriage.count_side_up.nil? ? 0 :
+          @carriage.count_side_up %> </p>
+
+        <p>Боковых нижних Мест:   <%= @carriage.count_side_down.nil? ? 0 :
+          @carriage.count_side_down %> </p>
+
+     <% elsif @carriage.carriage_type == CarriageType.find(2)%>
+
+        <p>Верхних мест:   <%= @carriage.count_up.nil? ? 0 :
+          @carriage.count_up %> </p>
+
+        <p>Нижних Мест:   <%= @carriage.count_down.nil? ? 0 :
+          @carriage.count_down %> </p>
+
+     <% elsif @carriage.carriage_type == CarriageType.find(3)%>
+
+        <p>Сидящих мест:   <%= @carriage.count_seat.nil? ? 0 :
+          @carriage.count_seat %> </p>
+
+      <% elsif @carriage.carriage_type == CarriageType.find(4)%>
+
+        <p>Сидящих мест:   <%= @carriage.count_SB.nil? ? 0 :
+          @carriage.count_SB %> </p>
+
+     <% end %>
+
 <% end %>
 
 <%if @carriage.train.nil? %>
   <p> Вагон не назначен </p>
 <% else %>
   <p>Вагон принадлежит поезду номер: </p>
-  <ul>
+    <ul>
       <li> <%= @carriage.train.number %> </li>
     </ul>
 <%end%>

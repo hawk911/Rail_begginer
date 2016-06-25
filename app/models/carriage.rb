@@ -8,6 +8,8 @@ class Carriage < ActiveRecord::Base
   validates :name, :carriage_type, presence: true
   validates :number, uniqueness: { scope: :train_id }
 
+  scope :ordered, -> (from_head) { order(from_head ? 'number' : 'number DESC') }
+
   private
 
   def set_number

@@ -8,19 +8,25 @@
 <%if @train.route.nil? %>
   <p> Маршрут не назначен </p>
 <% else %>
-  <p>Поезд едет по маршруту  </p>
+  <p> Поезд едет по маршруту  </p>
   <ul>
       <li> <%= @train.route.name %> </li>
     </ul>
 <%end%>
 
+<% if @train.sort_from_head %>
+  <p> <b> Нумерация с головы </b> </p>
+<% else %>
+  <p> <b> Нумерация с хвоста </b> </p>
+<% end %>
+
 <%if @train.carriages.empty? %>
   <p> Нет вагонов </p>
 <% else %>
   <p>Вагоны </p>
-  <% @train.carriages.each  do |carriage| %>
+  <% @train.carriages.ordered(@train.sort_from_head).each  do |carriage| %>
     <ul>
-      <li> <%= carriage.name %>  : <%= carriage.carriage_type.name %> </li>
+      <li> <%= link_to "Вагон №#{carriage.number}", carriage %> </li>
     </ul>
   <% end %>
   <% if @train.count_carriage_compartment !=0 %>
