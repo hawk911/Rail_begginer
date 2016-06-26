@@ -1,17 +1,24 @@
 <h1>Новый Вагон</h1>
 
-<div class="field">
-  <%=  label(:carriage_type, "Тип вагона") %>
-  <%=  collection_select(:post,:carriage_type_id, CarriageType.all, :id, :name) %>
-</div>
-
-<% if params[:carriage_type] == CarriageType.find(1) %>
-  <%= render 'economy_carriage' %>
+<% if params[:carriage_type] == "1" %>
+    <%= render 'economy_carriage' %>
 <% end %>
-
-<%= submit_tag "Edit", class: "edit_button"%>
-
 <p><%= link_to 'Плацкарт', new_carriage_path(carriage_type: CarriageType.find(1)) %></p>
+
+<% if params[:carriage_type] == "2" %>
+    <%= render 'comfort_carriage' %>
+<% end %>
+<p><%= link_to 'Купе', new_carriage_path(carriage_type: CarriageType.find(2)) %></p>
+
+<% if params[:carriage_type] == "3" %>
+    <%= render 'seat_carriage' %>
+<% end %>
+<p><%= link_to 'Сидячий', new_carriage_path(carriage_type: CarriageType.find(3)) %></p>
+
+<% if params[:carriage_type] == "4" %>
+    <%= render 'luxury_carriage' %>
+<% end %>
+<p><%= link_to 'СВ', new_carriage_path(carriage_type: CarriageType.find(4)) %></p>
 
 
 <%= link_to 'Назад', carriages_path %>

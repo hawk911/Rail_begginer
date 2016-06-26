@@ -1,0 +1,30 @@
+<%= form_for @carriage.becomes(Carriage) do |f| %>
+ <%=render 'common/errors' , resourse: @carriage %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+
+
+  <div class="field">
+    <%= f.label 'Количество СВ мест' %><br>
+    <%= f.number_field :count_SB %>
+  </div>
+
+
+  <div class="field">
+    <%= f.label :train , "Поезд" %>
+    <%= f.collection_select :train_id, Train.all, :id, :number %>
+  </div>
+
+  <div class="field">
+    <%= f.label :carriage_type , "Тип" %>
+    <%= f.collection_select :carriage_type_id, CarriageType.all,:id, :name,
+    {:selected => :carriage_type} %>
+  </div>
+
+  <div class="actions">
+    <%= render 'common/submit', f: f, resourse: @carriage %>
+  </div>
+<% end %>

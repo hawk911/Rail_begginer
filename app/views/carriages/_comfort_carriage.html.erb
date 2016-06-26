@@ -1,4 +1,4 @@
-<%= form_for(@carriage) do |f| %>
+<%= form_for @carriage.becomes(Carriage) do |f| %>
  <%=render 'common/errors' , resourse: @carriage %>
 
   <div class="field">
@@ -18,24 +18,14 @@
   </div>
 
   <div class="field">
-    <%= f.label 'Количество боковых верхних мест' %><br>
-    <%= f.number_field :count_side_up %>
-  </div>
-
-  <div class="field">
-    <%= f.label 'Количество боковых нижних мест' %><br>
-    <%= f.number_field :count_side_down %>
-  </div>
-
-
-  <div class="field">
     <%= f.label :train , "Поезд" %>
     <%= f.collection_select :train_id, Train.all, :id, :number %>
   </div>
 
   <div class="field">
     <%= f.label :carriage_type , "Тип" %>
-    <%= f.collection_select :carriage_type_id, CarriageType.all, :id, :name %>
+    <%= f.collection_select :carriage_type_id, CarriageType.all,:id, :name,
+    {:selected => :carriage_type} %>
   </div>
 
   <div class="actions">
