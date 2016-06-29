@@ -1,24 +1,24 @@
 <h1>Новый Вагон</h1>
 
-<% if params[:carriage_type] == "1" %>
+<% if params[:type] == 'EconomyCarriage' %>
     <%= render 'economy_carriage' %>
 <% end %>
-<p><%= link_to 'Плацкарт', new_carriage_path(carriage_type: CarriageType.find(1)) %></p>
+<p><%= link_to 'Плацкарт', new_carriage_path(type: 'EconomyCarriage') %></p>
 
-<% if params[:carriage_type] == "2" %>
+<% if params[:type] == 'ComfortCarriage' %>
     <%= render 'comfort_carriage' %>
 <% end %>
-<p><%= link_to 'Купе', new_carriage_path(carriage_type: CarriageType.find(2)) %></p>
+<p><%= link_to 'Купе', new_carriage_path(type: 'ComfortCarriage') %></p>
 
-<% if params[:carriage_type] == "3" %>
-    <%= render 'seat_carriage' %>
-<% end %>
-<p><%= link_to 'Сидячий', new_carriage_path(carriage_type: CarriageType.find(3)) %></p>
-
-<% if params[:carriage_type] == "4" %>
+<% if params[:type] == 'SvCarriage' %>
     <%= render 'luxury_carriage' %>
 <% end %>
-<p><%= link_to 'СВ', new_carriage_path(carriage_type: CarriageType.find(4)) %></p>
+<p><%= link_to 'Сидячий', new_carriage_path(type: 'SvCarriage') %></p>
+
+<% if params[:type] == 'SitCarriage' %>
+    <%= render 'seat_carriage' %>
+<% end %>
+<p><%= link_to 'СВ', new_carriage_path(type: 'SitCarriage') %></p>
 
 
 <%= link_to 'Назад', carriages_path %>

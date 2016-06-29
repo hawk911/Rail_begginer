@@ -8,11 +8,11 @@
 <%= @carriage.number %>
 </p>
 
-<% if @carriage.carriage_type.nil? %>
+<% if @carriage.type.nil? || @carriage.type.empty? %>
     <td> Тип не назначен </td>
   <% else %>
-    <td> Тип вагона: <%= @carriage.carriage_type.name %></td>
-     <% if @carriage.carriage_type == CarriageType.find(1) %>
+    <td> Тип вагона: <%= @carriage.type %></td>
+     <% if @carriage.type == 'EconomyCarriage' %>
         <p>Верхних мест:   <%= @carriage.count_up.nil? ? 0 :
           @carriage.count_up %> </p>
 
@@ -25,7 +25,7 @@
         <p>Боковых нижних Мест:   <%= @carriage.count_side_down.nil? ? 0 :
           @carriage.count_side_down %> </p>
 
-     <% elsif @carriage.carriage_type == CarriageType.find(2)%>
+     <% elsif @carriage.type == 'ComfortCarriage'%>
 
         <p>Верхних мест:   <%= @carriage.count_up.nil? ? 0 :
           @carriage.count_up %> </p>
@@ -33,12 +33,12 @@
         <p>Нижних Мест:   <%= @carriage.count_down.nil? ? 0 :
           @carriage.count_down %> </p>
 
-     <% elsif @carriage.carriage_type == CarriageType.find(3)%>
+     <% elsif @carriage.type == 'SvCarriage'%>
 
         <p>Сидящих мест:   <%= @carriage.count_seat.nil? ? 0 :
           @carriage.count_seat %> </p>
 
-      <% elsif @carriage.carriage_type == CarriageType.find(4)%>
+      <% elsif @carriage.type == 'SitCarriage'%>
 
         <p>Сидящих мест:   <%= @carriage.count_SB.nil? ? 0 :
           @carriage.count_SB %> </p>

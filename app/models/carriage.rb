@@ -1,11 +1,13 @@
 class Carriage < ActiveRecord::Base
 
+  TYPES = %w(ComfortCarriage EconomyCarriage SitCarriage SvCarriage)
+
   belongs_to :carriage_type
   belongs_to :train
 
   before_validation :set_number
 
-  validates :name, :carriage_type, presence: true
+  validates :type_car, presence: true, inclusion: { in: TYPES }
   validates :number, uniqueness: { scope: :train_id }
 
   scope :ordered, -> (from_head) { order(from_head ? 'number' : 'number DESC') }

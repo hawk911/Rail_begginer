@@ -23,9 +23,8 @@
   </div>
 
   <div class="field">
-    <%= f.label :carriage_type , "Тип" %>
-    <%= f.collection_select :carriage_type_id, CarriageType.all,:id, :name,
-    {:selected => :carriage_type} %>
+    <%= f.label :type , "Тип" %>
+    <%= f.text_field :type %>
   </div>
 
   <div class="actions">
