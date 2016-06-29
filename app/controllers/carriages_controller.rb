@@ -20,7 +20,7 @@ class CarriagesController < ApplicationController
 
     respond_to do |format|
       if @carriage.save
-        format.html { redirect_to @carriage, notice: 'Вагон создан!' }
+        format.html { redirect_to @carriage.becomes(Carriage), notice: 'Вагон создан!' }
       else
         format.html { render :new }
         end
