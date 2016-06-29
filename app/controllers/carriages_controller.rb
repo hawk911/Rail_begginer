@@ -30,7 +30,7 @@ class CarriagesController < ApplicationController
   def update
     respond_to do |format|
       if @carriage.update(carriage_params)
-        format.html { redirect_to @carriage, notice: 'Вагон обновлен!' }
+        format.html { redirect_to @carriage.becomes(Carriage), notice: 'Вагон обновлен!' }
       else
         format.html { render :edit }
       end
@@ -52,7 +52,8 @@ class CarriagesController < ApplicationController
 
     def carriage_params
       params.require(:carriage).permit(:name, :count_up, :count_down, :train_id,
-        :count_side_up,:count_side_down,:carriage_type_id, :type)
+        :count_side_up,:count_side_down,:count_SB, :count_seat ,
+        :carriage_type_id, :type)
     end
 
 end
