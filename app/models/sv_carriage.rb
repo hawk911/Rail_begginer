@@ -1,4 +1,4 @@
-class LuxuryCarriage < Carriage
+class SVCarriage < Carriage
 
 validates :count_SB, presence: true
 end

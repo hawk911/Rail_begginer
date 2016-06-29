@@ -1,24 +1,24 @@
 <h1>Новый Вагон</h1>
 
 <% if params[:type] == 'EconomyCarriage' %>
-    <%= render 'economy_carriage' %>
+    <%= render 'form' %>
 <% end %>
 <p><%= link_to 'Плацкарт', new_carriage_path(type: 'EconomyCarriage') %></p>
 
 <% if params[:type] == 'ComfortCarriage' %>
-    <%= render 'comfort_carriage' %>
+    <%= render 'form' %>
 <% end %>
 <p><%= link_to 'Купе', new_carriage_path(type: 'ComfortCarriage') %></p>
 
 <% if params[:type] == 'SvCarriage' %>
-    <%= render 'luxury_carriage' %>
+    <%= render 'form' %>
 <% end %>
-<p><%= link_to 'Сидячий', new_carriage_path(type: 'SvCarriage') %></p>
+<p><%= link_to 'СВ', new_carriage_path(type: 'SvCarriage') %></p>
 
 <% if params[:type] == 'SitCarriage' %>
-    <%= render 'seat_carriage' %>
+    <%= render 'form' %>
 <% end %>
-<p><%= link_to 'СВ', new_carriage_path(type: 'SitCarriage') %></p>
+<p><%= link_to 'Сидячий', new_carriage_path(type: 'SitCarriage') %></p>
 
 
 <%= link_to 'Назад', carriages_path %>

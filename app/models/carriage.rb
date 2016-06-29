@@ -7,7 +7,7 @@ class Carriage < ActiveRecord::Base
 
   before_validation :set_number
 
-  validates :type_car, presence: true, inclusion: { in: TYPES }
+  validates :type, presence: true, inclusion: { in: TYPES }
   validates :number, uniqueness: { scope: :train_id }
 
   scope :ordered, -> (from_head) { order(from_head ? 'number' : 'number DESC') }

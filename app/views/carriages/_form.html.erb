@@ -1,4 +1,4 @@
-<%= form_for(@carriage) do |f| %>
+<%= form_for @carriage.becomes(Carriage) do |f| %>
  <%=render 'common/errors' , resourse: @carriage %>
 
   <div class="field">
@@ -6,26 +6,33 @@
     <%= f.text_field :name %>
   </div>
 
-
-   <div class="field">
-    <%= f.label 'Количество верхних мест'%><br>
-    <%= f.number_field :count_up %>
-  </div>
-
-   <div class="field">
-    <%= f.label 'Количество нижних мест' %><br>
-    <%= f.number_field :count_down %>
-  </div>
-
+  <% if params[:type] == 'EconomyCarriage' %>
+      <%= render 'comfort_carriage', f: f %>
+      <%= render 'economy_carriage', f: f %>
+  <% elsif params[:type] == 'ComfortCarriage' %>
+      <%= render 'comfort_carriage', f: f %>
+  <% elsif params[:type] == 'SvCarriage' %>
+      <%= render 'sv_carriage', f: f %>
+  <% elsif params[:type] == 'SitCarriage' %>
+      <%= render 'sit_carriage', f: f %>
+  <% end %>
 
   <div class="field">
     <%= f.label :train , "Поезд" %>
     <%= f.collection_select :train_id, Train.all, :id, :number %>
   </div>
 
-    <div class="field">
-    <%= f.label :carriage_type , "Тип" %>
-    <%= f.collection_select :carriage_type_id, CarriageType.all, :id, :name %>
+  <div class="field">
+    <%= f.label :type , "Тип" %>
+    <% if params[:type] == 'EconomyCarriage' %>
+      <%= f.select :type, ['EconomyCarriage']  %>
+    <% elsif params[:type] == 'ComfortCarriage' %>
+      <%= f.select :type, ['ComfortCarriage']  %>
+    <% elsif params[:type] == 'SvCarriage' %>
+      <%= f.select :type, ['SvCarriage']  %>
+    <% elsif params[:type] == 'SitCarriage' %>
+      <%= f.select :type, ['SitCarriage']  %>
+    <% end %>
   </div>
 
   <div class="actions">
