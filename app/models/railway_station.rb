@@ -7,4 +7,5 @@ class RailwayStation < ActiveRecord::Base
   has_many :routes, through: :railway_stations_routes
 
   validates :title, presence: true
+  validates :number, presence: true
 end

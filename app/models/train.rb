@@ -42,6 +42,8 @@ class Train < ActiveRecord::Base
     self.carriage_reserveds.size
   end
 
+  protected
+
   validates :number, presence: true
 end
 

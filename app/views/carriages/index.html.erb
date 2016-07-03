@@ -1,20 +1,30 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Carriage</h1>
+<h1>Listing Carriages</h1>
 
 <table>
   <thead>
-    <tr>
-      <th>Наименование</th>
-      <th colspan="3"></th>
-    </tr>
+  <tr>
+    <th>Train</th>
+    <th>Type</th>
+    <th>Carriage Number</th>
+  </tr>
   </thead>
 
   <tbody>
-    <%= render @carriages %>
+  <% @carriages.each do |carriage| %>
+      <tr>
+        <td><%= carriage.train.number %></td>
+        <td><%= carriage.type %></td>
+        <td><%= carriage.number %></td>
+        <td><%= link_to 'Show', carriage.becomes(Carriage) %></td>
+        <td><%= link_to 'Edit', edit_carriage_path(carriage) %></td>
+        <td><%= link_to 'Destroy', carriage.becomes(Carriage), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+  <% end %>
   </tbody>
 </table>
 
 <br>
 
-<%= link_to 'New Carriage', new_carriage_path %>
+ <%= link_to 'New Carriage', new_carriage_path %>

@@ -6,6 +6,16 @@
     <%= f.number_field :number %>
   </div>
 
+  <div class="field">
+    <%= f.label "Нумерация с головы" %><br>
+    <%= f.check_box :sort_from_head %>
+  </div>
+
+  <div class="field">
+    <%= f.label :current_station, 'Текущая станция' %>
+    <%= f.collection_select :current_station_id, RailwayStation.all, :id, :title,
+    {prompt: 'Выберите станцию'} %>
+  </div>
 
   <div class="field">
     <%= f.label :route , "Маршрут" %>
