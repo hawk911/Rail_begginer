@@ -54,7 +54,7 @@
               <td>
                <%= form_tag update_arrival_time_railway_station_path(station),
               method: :patch do %>
-              <%= datetime_field_tag :arrival_time, station.arrival_time_in(@route) %>
+              <%= date_field_tag :arrival_time, station.arrival_time_in(@route) %>
               <%= hidden_field_tag :route_id, @route.id %>
               <%= submit_tag "Изменить" %>
               <% end %>
