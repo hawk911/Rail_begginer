@@ -11,6 +11,9 @@ Rails.application.routes.draw do
   resources :trains do
     resources :carriages, shallow: true
   end
+
+  resource :search, only: [:show, :new]
+  resources :tickets
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
