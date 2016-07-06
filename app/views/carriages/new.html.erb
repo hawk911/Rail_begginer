@@ -3,22 +3,22 @@
 <% if params[:type] == 'EconomyCarriage' %>
     <%= render 'form' %>
 <% end %>
-<p><%= link_to 'Плацкарт', new_carriage_path(type: 'EconomyCarriage') %></p>
+<p><%= link_to 'Плацкарт', new_train_carriage_path(type: 'EconomyCarriage') %></p>
 
 <% if params[:type] == 'ComfortCarriage' %>
     <%= render 'form' %>
 <% end %>
-<p><%= link_to 'Купе', new_carriage_path(type: 'ComfortCarriage') %></p>
+<p><%= link_to 'Купе', new_train_carriage_path(type: 'ComfortCarriage') %></p>
 
 <% if params[:type] == 'SvCarriage' %>
     <%= render 'form' %>
 <% end %>
-<p><%= link_to 'СВ', new_carriage_path(type: 'SvCarriage') %></p>
+<p><%= link_to 'СВ', new_train_carriage_path(type: 'SvCarriage') %></p>
 
 <% if params[:type] == 'SitCarriage' %>
     <%= render 'form' %>
 <% end %>
-<p><%= link_to 'Сидячий', new_carriage_path(type: 'SitCarriage') %></p>
+<p><%= link_to 'Сидячий', new_train_carriage_path(type: 'SitCarriage') %></p>
 
 
-<%= link_to 'Назад', carriages_path %>
+<%= link_to 'Назад', trains_path %>

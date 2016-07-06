@@ -19,16 +19,18 @@
 <% else %>
   <p> <b> Нумерация с хвоста </b> </p>
 <% end %>
-
+<%= link_to "Добавить новый вагон" , new_train_carriage_path(@train) %>
 <%if @train.carriages.empty? %>
   <p> Нет вагонов </p>
 <% else %>
   <p>Вагоны </p>
-  <% @train.carriages.ordered(@train.sort_from_head).each  do |carriage| %>
+
+    <% @train.carriages.ordered(@train.sort_from_head).each  do |carriage| %>
     <ul>
-      <li> <%= link_to "Вагон №#{carriage.number}", carriage %> </li>
+      <li> <%= link_to "Вагон №#{carriage.number}", carriage.becomes(Carriage) %> </li>
     </ul>
   <% end %>
+
   <% if @train.count_carriage_compartment !=0 %>
     <p>
       <strong>Количество купейных вагонов:</strong>
