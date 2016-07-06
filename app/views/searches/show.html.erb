@@ -15,7 +15,7 @@
         <span><%= "Поезд № #{train.number}" %></span>
         <span><%= "Время отправления: #{train.route.railway_stations.first.departure_time_in(train.route).try(:strftime, "%H:%M")}" %></span>
         <span><%= "Время прибытия: #{train.route.railway_stations.last.arrival_time_in(train.route).try(:strftime, "%H:%M")}" %></span>
-        <%= link_to 'Купить билет', new_ticket_path(ticket: {
+        <%= link_to 'Купить билет', new_tiket_path(tiket: {
             train_id: train.id,
             begin_station_id: params[:from],
             end_station_id: params[:to]}) %>

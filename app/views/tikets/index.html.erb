@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Список Билетов</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Наименование</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <%= render @tikets %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Начало', root %>

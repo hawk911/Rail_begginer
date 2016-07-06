@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   end
 
   resource :search, only: [:show, :new]
-  resources :tickets
+  resources :tikets
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
