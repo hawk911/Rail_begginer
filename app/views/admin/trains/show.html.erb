@@ -1,0 +1,69 @@
+<p>
+  <strong>Number:</strong>
+  <%= @train.number %>
+</p>
+
+<%if @train.route.nil? %>
+  <p> Маршрут не назначен </p>
+<% else %>
+  <p> Поезд едет по маршруту  </p>
+  <ul>
+      <li> <%= @train.route.name %> </li>
+    </ul>
+<%end%>
+
+<% if @train.sort_from_head %>
+  <p> <b> Нумерация с головы </b> </p>
+<% else %>
+  <p> <b> Нумерация с хвоста </b> </p>
+<% end %>
+<%= link_to "Добавить новый вагон" , new_admin_train_carriage_path(@train) %>
+<%if @train.carriages.empty? %>
+  <p> Нет вагонов </p>
+<% else %>
+  <p>Вагоны </p>
+
+    <% @train.carriages.ordered(@train.sort_from_head).each  do |carriage| %>
+    <ul>
+      <li> <%= link_to "Вагон №#{carriage.number}", [:admin,carriage.becomes(Carriage)] %> </li>
+    </ul>
+  <% end %>
+
+  <% if @train.count_carriage_compartment !=0 %>
+    <p>
+      <strong>Количество купейных вагонов:</strong>
+        <%= @train.count_carriage_compartment %>
+      <ul>Количество верхних мест
+        <li> <%= @train.compartment_up_seats %></li>
+      </ul>
+      <ul>Количество нижних мест
+        <li> <%= @train.compartment_down_seats %></li>
+      </ul>
+    </p>
+  <% else %>
+    <p>
+      <strong> Нет купейных вагонов</strong>
+    </p>
+  <% end %>
+  <% if @train.count_carriage_reserved !=0 %>
+    <p>
+      <strong>Количество плацкартных вагонов:</strong>
+        <%= @train.count_carriage_reserved %>
+      <ul>Количество верхних мест
+        <li> <%= @train.reserved_up_seats %></li>
+      </ul>
+      <ul>Количество нижних мест
+        <li> <%= @train.reserved_down_seats %></li>
+      </ul>
+    </p>
+  <% else %>
+    <p>
+      <strong> Нет плацкартных вагонов</strong>
+    </p>
+  <% end %>
+<% end %>
+
+
+
+<%= link_to 'Edit', edit_admin_train_path(@train) %> |
+<%= link_to 'Back', admin_trains_path %>

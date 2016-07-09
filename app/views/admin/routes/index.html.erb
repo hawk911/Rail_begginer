@@ -1,4 +1,4 @@
-<h1>Список Билетов</h1>
+<h1>Список Маршрутов</h1>
 
 <table>
   <thead>
@@ -9,10 +9,10 @@
   </thead>
 
   <tbody>
-    <%= render @tikets %>
+    <%= render @routes %>
   </tbody>
 </table>
 
 <br>
 
-<%= link_to 'Начало', root %>
+<%= link_to 'Новый Маршрут', new_admin_route_path %>
