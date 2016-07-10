@@ -1,0 +1,28 @@
+<%= form_for(@tiket) do |f| %>
+    <%= render 'common/errors', resourse: @tiket %>
+
+    <h3>
+      <%= "#{@from.title} -
+         #{@to.title}" %>
+    </h3>
+
+    <%= f.hidden_field :train_id, value: @tiket.train_id %>
+    <%= f.hidden_field :begin_station_id, value: @tiket.begin_station_id %>
+    <%= f.hidden_field :end_station_id, value: @tiket.end_station_id %>
+
+    <div>
+      <%= "Train number: #{@tiket.train.number}" %><br>
+    </div>
+
+    <div>
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+    </div>
+
+    <div>
+      <%= f.label :passport %>
+      <%= f.number_field :passport, min: 1 %>
+    </div>
+
+    <%= f.submit 'Buy' %>
+<% end %>
