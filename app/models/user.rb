@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
 
   CURRENT_USER = User.find_by(name: 'Admin') || User.create(name: 'Admin')
 
-  #validates :name, presence: true
+  validates :name, presence: true
 
   def self.current_user
     CURRENT_USER
