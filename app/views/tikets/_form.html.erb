@@ -2,14 +2,13 @@
     <%= render 'common/errors', resourse: @tiket %>
 
     <h3>
-      <%= "#{@from.name} -
-         #{@to.name}" %>
+      <%= "#{@from.title} -
+         #{@to.title}" %>
     </h3>
 
     <%= f.hidden_field :train_id, value: @tiket.train_id %>
     <%= f.hidden_field :begin_station_id, value: @tiket.begin_station_id %>
     <%= f.hidden_field :end_station_id, value: @tiket.end_station_id %>
-    <%= f.hidden_field :user_id, value: User.current_user.id %>
 
     <div>
       <%= "Train number: #{@tiket.train.number}" %><br>

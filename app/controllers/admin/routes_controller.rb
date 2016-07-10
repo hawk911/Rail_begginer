@@ -1,4 +1,4 @@
-class Admin::RoutesController < ApplicationController
+class Admin::RoutesController < Admin::BaseController
   before_action :set_route, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -20,7 +20,7 @@ class Admin::RoutesController < ApplicationController
 
     respond_to do |format|
       if @route.save
-        format.html { redirect_to @route, notice: 'Маршрут создан!' }
+        format.html { redirect_to [:admin,@route], notice: 'Маршрут создан!' }
       else
         format.html { render :new }
         end
@@ -30,7 +30,7 @@ class Admin::RoutesController < ApplicationController
   def update
     respond_to do |format|
       if @route.update(train_params)
-        format.html { redirect_to @route, notice: 'Маршрут обновлен!' }
+        format.html { redirect_to [:admin,@route], notice: 'Маршрут обновлен!' }
       else
         format.html { render :edit }
       end

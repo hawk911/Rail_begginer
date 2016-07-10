@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
 <p>
   <strong>Наименование:</strong>
   <%= @route.name %>
@@ -44,7 +42,7 @@
           <tr>
             <td> <%= station.title %> </td>
             <td>
-              <%= form_tag update_position_railway_station_path(station),
+              <%= form_tag update_position_admin_railway_station_path(station),
               method: :patch  do %>
               <%= number_field_tag :position, station.position_in(@route)%>
               <%= hidden_field_tag :route_id, @route.id %>
@@ -52,7 +50,7 @@
               <% end %>
               </td>
               <td>
-                 <%= form_tag update_arrival_time_railway_station_path(station),
+                 <%= form_tag update_arrival_time_admin_railway_station_path(station),
                 method: :patch do %>
                 <%= datetime_field_tag :arrival_time, station.arrival_time_in(@route).try(:strftime, "%D %H:%M") %>
                 <%= hidden_field_tag :route_id, @route.id %>
@@ -60,7 +58,7 @@
                 <% end %>
               </td>
               <td>
-                 <%= form_tag update_departure_time_railway_station_path(station),
+                 <%= form_tag update_departure_time_admin_railway_station_path(station),
                 method: :patch do %>
                 <%= datetime_field_tag :departure_time, station.departure_time_in(@route).try(:strftime, "%D %H:%M") %>
                 <%= hidden_field_tag :route_id, @route.id %>

@@ -1,5 +1,4 @@
-class Admin::RailwayStationsController < ApplicationController
-  before_action :authenticate_user!
+class Admin::RailwayStationsController < Admin::BaseController
   before_action :set_railway_station, only: [:show, :edit, :update, :destroy,
     :update_position, :update_arrival_time, :update_departure_time]
 
@@ -27,7 +26,7 @@ class Admin::RailwayStationsController < ApplicationController
 
     respond_to do |format|
       if @railway_station.save
-        format.html { redirect_to @railway_station, notice: 'Railway station was successfully created.' }
+        format.html { redirect_to [:admin,@railway_station], notice: 'Railway station was successfully created.' }
       else
         format.html { render :new }
       end
@@ -38,7 +37,7 @@ class Admin::RailwayStationsController < ApplicationController
   def update
     respond_to do |format|
       if @railway_station.update(railway_station_params)
-        format.html { redirect_to @railway_station, notice: 'Railway station was successfully updated.' }
+        format.html { redirect_to [:admin,@railway_station], notice: 'Railway station was successfully updated.' }
       else
         format.html { render :edit }
       end

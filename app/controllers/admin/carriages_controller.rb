@@ -1,4 +1,4 @@
-class Admin::CarriagesController < ApplicationController
+class Admin::CarriagesController < Admin::BaseController
   before_action :set_train, only: [:new, :create]
   before_action :set_carriage, only: [:show, :edit, :update, :destroy]
 
@@ -21,7 +21,7 @@ class Admin::CarriagesController < ApplicationController
 
     respond_to do |format|
       if @carriage.save
-        format.html { redirect_to @train, notice: 'Вагон создан!' }
+        format.html { redirect_to [:admin,@train], notice: 'Вагон создан!' }
       else
         format.html { render :new }
         end
@@ -31,7 +31,7 @@ class Admin::CarriagesController < ApplicationController
   def update
     respond_to do |format|
       if @carriage.update(carriage_params)
-        format.html { redirect_to @carriage.becomes(Carriage), notice: 'Вагон обновлен!' }
+        format.html { redirect_to [:admin,@carriage.becomes(Carriage)], notice: 'Вагон обновлен!' }
       else
         format.html { render :edit }
       end

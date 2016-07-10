@@ -1,18 +1,34 @@
 <h1>Список Билетов</h1>
+<% if current_user.tikets.empty? %>
+  <p> Нет билетов</p>
+<% else %>
 
 <table>
   <thead>
     <tr>
-      <th>Наименование</th>
-      <th colspan="3"></th>
+      <th>Начальная</th>
+      <th>Конечная</th>
+      <th collspan="3">Наименование</th>
+      <th> Паспорт </th>
+      <th> Номер поезда </th>
     </tr>
   </thead>
 
   <tbody>
-    <%= render @tikets %>
+    <% current_user.tikets.each do |tiket| %>
+      <tr>
+          <td><%= tiket.begin_station.title %></td>
+          <td><%= tiket.end_station.title %></td>
+          <td><%= tiket.user_name %></td>
+          <td><%= tiket.passport %></td>
+          <td><%= tiket.train.number %></td>
+          <td><%= link_to 'Show', tiket_path(tiket) %></td>
+          <td><%= link_to 'Delete', tiket_path(tiket), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+    <% end %>
   </tbody>
 </table>
-
+<% end %>
 <br>
 
-<%= link_to 'Начало', root %>
+<%= link_to 'Начало', root_path %>
