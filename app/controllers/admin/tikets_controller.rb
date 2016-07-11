@@ -1,6 +1,6 @@
 class Admin::TiketsController < Admin::BaseController
-  before_action :set_tiket, only: [:show, :edit, :update, :destroy]
-  before_action :set_stations, only: [:new]
+  before_action :set_tiket, only: [:show, :edit, :update, :destroy, :set_stations]
+  before_action :set_stations, only: [:edit]
 
   def index
     @tikets = Tiket.all
@@ -9,25 +9,12 @@ class Admin::TiketsController < Admin::BaseController
   def show
   end
 
-  def new
-    @tiket = Tiket.new(tiket_params)
-  end
-
-  def create
-    @tiket  = current_user.tikets.new(tiket_params)
-    if @tiket.save
-      redirect_to @tiket
-    else
-      render :new
-    end
-  end
-
   def edit
   end
 
   def update
     if @tiket.update(tiket_params)
-      redirect_to @tiket
+      redirect_to [:admin,@tiket]
     else
       render :edit
     end
@@ -35,7 +22,7 @@ class Admin::TiketsController < Admin::BaseController
 
   def destroy
     @tiket.destroy
-    redirect_to tikets_path
+    redirect_to [:admin,tikets_path]
   end
 
   private
@@ -51,7 +38,7 @@ class Admin::TiketsController < Admin::BaseController
   end
 
   def set_stations
-    @from = RailwayStation.find(params[:tiket][:begin_station_id])
-    @to = RailwayStation.find(params[:tiket][:end_station_id])
+    @from = RailwayStation.find(@tiket.begin_station_id)
+    @to = RailwayStation.find(@tiket.end_station_id)
   end
 end

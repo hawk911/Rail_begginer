@@ -27,7 +27,6 @@ ActiveRecord::Schema.define(version: 20160710115227) do
     t.datetime "updated_at",       null: false
     t.integer  "carriage_type_id"
     t.integer  "train_id"
-    t.integer  "count_top"
     t.integer  "count_side_down"
     t.integer  "count_side_up"
     t.integer  "count_SB"

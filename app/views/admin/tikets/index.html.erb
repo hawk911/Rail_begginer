@@ -22,8 +22,9 @@
           <td><%= tiket.user_name %></td>
           <td><%= tiket.passport %></td>
           <td><%= tiket.train.number %></td>
-          <td><%= link_to 'Show', tiket_path(tiket) %></td>
-          <td><%= link_to 'Delete', tiket_path(tiket), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td><%= link_to 'Show', admin_tiket_path(tiket) %></td>
+          <td><%= link_to 'Edit', edit_admin_tiket_path(tiket) %></td>
+          <td><%= link_to 'Delete', admin_tiket_path(tiket), method: :delete, data: { confirm: 'Are you sure?' } %></td>
         </tr>
     <% end %>
   </tbody>
