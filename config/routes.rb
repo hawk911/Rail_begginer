@@ -1,16 +1,26 @@
 Rails.application.routes.draw do
-  resources :trains
-  resources :railway_stations do
-    patch :update_position, on: :member
-    patch :update_arrival_time, on: :member
-    patch :update_departure_time, on: :member
-  end
-  resources :routes
+  devise_for :users
+  #devise_for :users, controllers: { registrations: "users/registrations" }
 
 
-  resources :trains do
-    resources :carriages, shallow: true
+
+  namespace :admin do
+
+    resources :railway_stations do
+      patch :update_position, on: :member
+      patch :update_arrival_time, on: :member
+      patch :update_departure_time, on: :member
+    end
+
+    resources :trains do
+      resources :carriages, shallow: true
+    end
+
+    resources :routes
+    resources :tikets
   end
+
+
 
   resource :search, only: [:show, :new]
   resources :tikets
@@ -18,7 +28,7 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-   root 'main#index'
+  root 'main#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

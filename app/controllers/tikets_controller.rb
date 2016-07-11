@@ -14,7 +14,7 @@ class TiketsController < ApplicationController
   end
 
   def create
-    @tiket = Tiket.new(tiket_params)
+    @tiket  = current_user.tikets.new(tiket_params)
     if @tiket.save
       redirect_to @tiket
     else

@@ -1,6 +1,15 @@
 <h1> Добро Пожаловать </h1>
-<h2><%= link_to 'Станции' , railway_stations_path %></h2>
-<h2><%= link_to 'Поезда'  , trains_path %></h2>
-<h2><%= link_to 'Маршруты', routes_path %></h2>
+
+<h2><%= link_to 'Станции' , admin_railway_stations_path %></h2>
+<h2><%= link_to 'Поезда'  , admin_trains_path %></h2>
+<h2><%= link_to 'Маршруты', admin_routes_path %></h2>
+<% if user_signed_in? %>
+<% if current_user.admin %>
+<h2><%= link_to 'Билеты', admin_tikets_path %></h2>
+<% else %>
+<h2><%= link_to 'Билеты', tikets_path %></h2>
+<% end %>
+<% end %>
 <h2><%= link_to 'Поиск', search_path %></h2>
+
 

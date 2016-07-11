@@ -1,15 +1,24 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>RailBegginer</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
+<%= render 'layouts/form' %>
 <body>
+
+
+<p id="notice" class="notice"><%= notice %></p>
+<p class="alert"><%= alert %></p>
+
+<% if user_signed_in? %>
+<%= link_to "Выйти", destroy_user_session_path, method: :delete %>
+<p> Аккаут: <%= current_user.email %> </p>
+<p> Имя: <%= current_user.name %> </p>
+<% else %>
+<%= link_to "Войти", new_user_session_path %>
+<% end %>
+
+
 
 <%= yield %>
 
- <p>&copy 2016 Denis Bogatyrev  Учебный проект <a href="http://www.thinknetica.com">  в онлайн-школе Thinknetica.</a> </p>
+<%= render 'layouts/watermark' %>
 </body>
 </html>

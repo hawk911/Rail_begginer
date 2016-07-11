@@ -1,0 +1,15 @@
+<%= form_for([:admin,@railway_station]) do |f| %>
+  <%=render 'common/errors' , resourse: @railway_station %>
+
+  <div class="field">
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :number %><br>
+    <%= f.number_field :number %>
+  </div>
+  <div class="actions">
+    <%= render 'common/submit', f: f, resourse: @railway_station %>
+  </div>
+<% end %>
