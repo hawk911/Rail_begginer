@@ -17,7 +17,7 @@
     <% else %>
       <td> <b>Тип вагона: </b> <%= carriage.type %></td>
     <% end %>
-  <td><%= link_to 'Show', carriage %></td>
-  <td><%= link_to 'Edit', edit_carriage_path(carriage) %></td>
-  <td><%= link_to 'Destroy', carriage, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  <td><%= link_to 'Show', [:admin,carriage] %></td>
+  <td><%= link_to 'Edit', edit_admin_carriage_path(carriage) %></td>
+  <td><%= link_to 'Destroy', [:admin,carriage], method: :delete, data: { confirm: 'Are you sure?' } %></td>
 </tr>

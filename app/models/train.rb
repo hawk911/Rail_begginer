@@ -8,7 +8,7 @@ class Train < ActiveRecord::Base
 
   def carriage_compartments
     carriages.select do |carriage|
-      carriage.carriage_type == CarriageType.find(2)
+      carriage.type == 'ComfortCarriage'
     end
   end
 
@@ -26,7 +26,7 @@ class Train < ActiveRecord::Base
 
   def carriage_reserveds
     carriages.select do |carriage|
-       carriage.carriage_type == CarriageType.find(1)
+       carriage.type == 'EconomyCarriage'
     end
   end
 

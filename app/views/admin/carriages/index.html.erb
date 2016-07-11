@@ -15,9 +15,9 @@
         <td><%= carriage.train.number %></td>
         <td><%= carriage.type %></td>
         <td><%= carriage.number %></td>
-        <td><%= link_to 'Show', admin_carriage.becomes(Carriage) %></td>
+        <td><%= link_to 'Show', [:admin,carriage.becomes(Carriage)] %></td>
         <td><%= link_to 'Edit', edit_admin_carriage_path(carriage) %></td>
-        <td><%= link_to 'Destroy', admin_carriage.becomes(Carriage), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Destroy', [:admin,carriage.becomes(Carriage)], method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
   <% end %>
   </tbody>
