@@ -1,0 +1,32 @@
+ru:
+  common:
+    back: 'Назад'
+    edit: 'Редактировать'
+    new: 'Создать новую станцию'
+    show: 'Показать'
+    destroy: 'Удалить'
+    destroy_q: 'Вы уверены?'
+    errors: 'При заполнении формы возникли ошибки'
+  admin:
+    railway_stations:
+      new:
+        title: 'Новая станция'
+      index:
+        title: 'Станции'
+      form:
+        submit: '%{action} станцию'
+      show:
+        title: 'Станция'
+      edit:
+        title: 'Редактировать станцию'
+    trains:
+      new:
+        title: 'Новый поезд'
+      index:
+        title: 'Поезда'
+      edit:
+        title: 'Редактировать поезд'
+      form:
+        submit: '%{action} станцию'
+      show:
+        number: 'Номер'
