@@ -18,12 +18,12 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :train , "Поезд" %>
+    <%= f.label :train %>
     <%= f.collection_select :train_id, Train.all, :id, :number %>
   </div>
 
   <div class="field">
-    <%= f.label :type , "Тип" %>
+    <%= f.label :type  %>
     <% if params[:type] == 'EconomyCarriage' %>
       <%= f.select :type, ['EconomyCarriage']  %>
     <% elsif params[:type] == 'ComfortCarriage' %>

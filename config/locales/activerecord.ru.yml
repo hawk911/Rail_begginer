@@ -1,0 +1,57 @@
+ru:
+  activerecord:
+    models:
+      railway_station: 'Станция'
+      train: 'Поезд'
+      tiket: 'Билет'
+      carriage: 'Вагон'
+      route: 'Маршрут'
+    attributes:
+      railway_station:
+        title: 'Наименование'
+        number: 'Номер'
+      train:
+        number: 'Номер'
+        current_station: 'Текущая станция'
+        route: 'Маршрут'
+      route:
+        name: 'Наименование'
+        railway_station_ids: 'Станции'
+      tiket:
+        name: 'Имя'
+        passport: 'Паспорт'
+      carriage:
+        name: 'Наименование'
+        train: 'Поезд'
+        type: 'Тип'
+      user:
+        name: 'Имя'
+        surname: 'Фамилия'
+        email: 'Электронная почта'
+        password: 'Пароль'
+    errors:
+      messages:
+        blank: 'не может быть пустым'
+        too_short: 'слишком короткое'
+        taken: 'не уникально'
+      models:
+        railway_station:
+          attributes:
+            title:
+              blank: 'введите название станции'
+        train:
+          attributes:
+            number:
+              blank: 'введите номер поезда'
+        route:
+          attributes:
+            name:
+              blank: 'введите наименование станции'
+        carriage:
+          attributes:
+            name:
+              blank: 'введите наименование вагона'
+
+
+
+

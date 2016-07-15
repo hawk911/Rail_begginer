@@ -10,6 +10,6 @@
     <%= f.number_field :number %>
   </div>
   <div class="actions">
-    <%= render 'common/submit', f: f, resourse: @railway_station %>
+    <%= f.submit t('.submit', action: @railway_station.new_record? ? 'Создать' : 'Изменить') %>
   </div>
 <% end %>
