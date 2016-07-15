@@ -7,6 +7,14 @@ ru:
     destroy: 'Удалить'
     destroy_q: 'Вы уверены?'
     errors: 'При заполнении формы возникли ошибки'
+    exit: 'Выход'
+    enter: 'Вход'
+  layouts:
+      application:
+        trains: 'Поезда'
+        railway_stations: 'Станции'
+        routes: 'Маршруты'
+        tikets: 'Билеты'
   admin:
     railway_stations:
       new:
@@ -30,3 +38,16 @@ ru:
         submit: '%{action} станцию'
       show:
         number: 'Номер'
+    routes:
+      new:
+        title: 'Новый Маршрут'
+      index:
+        title: 'Список Маршрутов'
+      edit:
+        title: 'Редактировать Маршрут'
+      form:
+        submit: '%{action} маршрут'
+      show:
+        name: 'Наименование'
+
+

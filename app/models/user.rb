@@ -5,12 +5,12 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :validatable, :confirmable
   has_many :tikets
 
-  CURRENT_USER = User.find_by(name: 'Admin') || User.create(name: 'Admin')
+  #CURRENT_USER = User.find_by(name: 'Admin') || User.create(name: 'Admin')
 
   validates :name, presence: true
 
-  def self.current_user
-    CURRENT_USER
-  end
+  #def self.current_user
+  #  CURRENT_USER
+  #end
 
 end
