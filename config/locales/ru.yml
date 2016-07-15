@@ -15,6 +15,7 @@ ru:
         railway_stations: 'Станции'
         routes: 'Маршруты'
         tikets: 'Билеты'
+        searches: "Поиск"
   admin:
     railway_stations:
       new:
