@@ -11,7 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160710115227) do
+ActiveRecord::Schema.define(version: 20160716143957) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "carriage_types", force: :cascade do |t|
     t.string   "name"
@@ -34,6 +37,10 @@ ActiveRecord::Schema.define(version: 20160710115227) do
     t.string   "type"
     t.integer  "number"
   end
+
+  add_index "carriages", ["carriage_type_id"], name: "index_carriages_on_carriage_type_id", using: :btree
+  add_index "carriages", ["id", "type"], name: "index_carriages_on_id_and_type", using: :btree
+  add_index "carriages", ["train_id"], name: "index_carriages_on_train_id", using: :btree
 
   create_table "railway_stations", force: :cascade do |t|
     t.string   "title"
@@ -68,6 +75,11 @@ ActiveRecord::Schema.define(version: 20160710115227) do
     t.integer  "passport"
   end
 
+  add_index "tikets", ["begin_station_id"], name: "index_tikets_on_begin_station_id", using: :btree
+  add_index "tikets", ["end_station_id"], name: "index_tikets_on_end_station_id", using: :btree
+  add_index "tikets", ["train_id"], name: "index_tikets_on_train_id", using: :btree
+  add_index "tikets", ["user_id"], name: "index_tikets_on_user_id", using: :btree
+
   create_table "trains", force: :cascade do |t|
     t.integer  "number"
     t.datetime "created_at",                        null: false
@@ -76,6 +88,9 @@ ActiveRecord::Schema.define(version: 20160710115227) do
     t.integer  "route_id"
     t.boolean  "sort_from_head",     default: true
   end
+
+  add_index "trains", ["current_station_id"], name: "index_trains_on_current_station_id", using: :btree
+  add_index "trains", ["route_id"], name: "index_trains_on_route_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "name"
@@ -94,7 +109,7 @@ ActiveRecord::Schema.define(version: 20160710115227) do
     t.string   "surname"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
 end
