@@ -1,35 +1,39 @@
 <h1>Список Билетов</h1>
-<% if current_user.tikets.empty? %>
-  <p> Нет билетов</p>
-<% else %>
+<% if user_signed_in? %>
+  <% if current_user.tikets.empty? %>
+    <p> Нет билетов</p>
+  <% else %>
 
-<table>
-  <thead>
-    <tr>
-      <th>Начальная</th>
-      <th>Конечная</th>
-      <th collspan="3">Наименование</th>
-      <th> Паспорт </th>
-      <th> Номер поезда </th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @tikets.each do |tiket| %>
+  <table>
+    <thead>
       <tr>
-          <td><%= tiket.begin_station.title %></td>
-          <td><%= tiket.end_station.title %></td>
-          <td><%= tiket.user_name %></td>
-          <td><%= tiket.passport %></td>
-          <td><%= tiket.train.number %></td>
-          <td><%= link_to 'Show', admin_tiket_path(tiket) %></td>
-          <td><%= link_to 'Edit', edit_admin_tiket_path(tiket) %></td>
-          <td><%= link_to 'Delete', admin_tiket_path(tiket), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        </tr>
-    <% end %>
-  </tbody>
-</table>
-<% end %>
+        <th>Начальная</th>
+        <th>Конечная</th>
+        <th collspan="3">Наименование</th>
+        <th> Паспорт </th>
+        <th> Номер поезда </th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @tikets.each do |tiket| %>
+        <tr>
+            <td><%= tiket.begin_station.title %></td>
+            <td><%= tiket.end_station.title %></td>
+            <td><%= tiket.user_name %></td>
+            <td><%= tiket.passport %></td>
+            <td><%= tiket.train.number %></td>
+            <td><%= link_to 'Show', admin_tiket_path(tiket) %></td>
+            <td><%= link_to 'Edit', edit_admin_tiket_path(tiket) %></td>
+            <td><%= link_to 'Delete', admin_tiket_path(tiket), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <% end %>
+<% else %>
+  <%= link_to 'Войти',new_user_session_path %>
+<% end%>
 <br>
 
 <%= link_to 'Начало', root_path %>
