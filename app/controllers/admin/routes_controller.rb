@@ -23,7 +23,7 @@ class Admin::RoutesController < Admin::BaseController
         format.html { redirect_to [:admin,@route], notice: 'Маршрут создан!' }
       else
         format.html { render :new }
-        end
+      end
     end
   end
 
@@ -40,7 +40,7 @@ class Admin::RoutesController < Admin::BaseController
   def destroy
     @route.destroy
     respond_to do |format|
-      format.html { redirect_to trains_url, notice: 'Маршрут удален!' }
+      format.html { redirect_to admin_routes_path, notice: 'Маршрут удален!' }
     end
   end
 

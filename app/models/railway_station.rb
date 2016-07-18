@@ -6,7 +6,8 @@ class RailwayStation < ActiveRecord::Base
   has_many :railway_stations_routes
   has_many :routes, through: :railway_stations_routes
 
-  scope :ordered, -> { joins(:railway_stations_routes).order("railway_stations_routes.position").uniq }
+  scope :ordered, -> { joins(:railway_stations_routes).select('railway_stations_routes.*, railway_stations.title, railway_stations.id').order('railway_stations_routes.position').uniq }
+
 
   validates :title, presence: true
   validates :number, presence: true
