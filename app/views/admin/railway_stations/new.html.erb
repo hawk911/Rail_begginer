@@ -1,5 +1,11 @@
 <h1><%= t('.title') %></h1>
 
-<%= render 'form' %>
+<div class="row">
+  <div class="col-md-3">
 
-<%= link_to t('common.back'), admin_railway_stations_path %>
+    <%= render 'form', station: @railway_station %>
+
+    <%= link_to t('common.back'), admin_railway_stations_path %>
+
+  </div>
+</div>
