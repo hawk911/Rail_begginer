@@ -30,7 +30,7 @@ class Admin::RoutesController < Admin::BaseController
   def update
     respond_to do |format|
       if @route.update(train_params)
-        format.html { redirect_to [:admin,@route], notice: 'Маршрут обновлен!' }
+        format.html { redirect_to admin_routes_path, notice: 'Маршрут обновлен!' }
       else
         format.html { render :edit }
       end
